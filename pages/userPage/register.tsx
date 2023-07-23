@@ -51,7 +51,7 @@ export default function Register() {
         };
 
         try {
-            await axios.post('http://127.0.0.1:8000/api/register/', data);
+            await axios.post('http://163.13.201.95:8000/api/register/', data);
             console.log('註冊成功');
             setShowModal(true); // 設定彈出視窗的顯示狀態為 true
         } catch (error) {

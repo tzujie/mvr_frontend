@@ -17,7 +17,7 @@ export default function Accountinfo() {
 
         // 用戶登入->API
         if (userEmail) {
-            const apiUrl = `http://127.0.0.1:8000/api/accounts/?email=${encodeURIComponent(userEmail)}`;
+            const apiUrl = `http://163.13.201.95:8000/api/accounts/?email=${encodeURIComponent(userEmail)}`;
 
             axios
                 .get(apiUrl)

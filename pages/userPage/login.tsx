@@ -46,7 +46,7 @@ export default function Login() {
         };
 
         try {
-            await axios.post('http://127.0.0.1:8000/api/login/', data);
+            await axios.post('http://163.13.201.95:8000/api/login/', data);
             window.alert('登入成功!!');
 
             Cookies.set('loggedIn', 'true', { expires: 7 });
