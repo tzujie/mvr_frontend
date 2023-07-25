@@ -46,12 +46,12 @@ export default function Login() {
         };
 
         try {
-            await axios.post('http://163.13.201.95:8000/api/login/', data);
+            // 將此處的 URL 改為您的 ngrok URL
+            await axios.post('https://b552-2402-7500-4dc-4ce9-e5c1-4a93-3f6e-286e.ngrok-free.app/api/login/', data);
             window.alert('登入成功!!');
 
             Cookies.set('loggedIn', 'true', { expires: 7 });
             Cookies.set('userEmail', formData.get('account') as string, { expires: 7 });
-
 
             window.location.replace('/userPage/userSetting');
         } catch (error: any) {
