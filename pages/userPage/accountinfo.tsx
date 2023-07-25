@@ -8,12 +8,14 @@ export default function Accountinfo() {
 
     const getUserEmail = () => {
         const userEmail = Cookies.get('userEmail');
+        console.log("User Email:", userEmail);  // 新增的 console.log
         return userEmail ? userEmail : null;
     };
 
     useEffect(() => {
         // 獲取Email
         const userEmail = getUserEmail();
+        console.log("Fetched User Email:", userEmail);  // 新增的 console.log
 
         // 用戶登入->API
         if (userEmail) {
