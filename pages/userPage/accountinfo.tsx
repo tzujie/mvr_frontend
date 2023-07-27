@@ -19,7 +19,7 @@ export default function Accountinfo() {
 
         // 用戶登入->API
         if (userEmail) {
-            const apiUrl = `https://b552-2402-7500-4dc-4ce9-e5c1-4a93-3f6e-286e.ngrok-free.app/api/accounts/?email=${encodeURIComponent(userEmail)}`;
+            const apiUrl = `https://b084-163-13-201-95.ngrok-free.app/api/accounts/?email=${encodeURIComponent(userEmail)}`;
 
             axios
                 .get(apiUrl)

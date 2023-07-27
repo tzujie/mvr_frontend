@@ -47,7 +47,7 @@ export default function Login() {
 
         try {
             // 將此處的 URL 改為您的 ngrok URL
-            await axios.post('https://b552-2402-7500-4dc-4ce9-e5c1-4a93-3f6e-286e.ngrok-free.app/api/login/', data);
+            await axios.post('https://b084-163-13-201-95.ngrok-free.app/api/login/', data);
             window.alert('登入成功!!');
 
             Cookies.set('loggedIn', 'true', { expires: 7 });
