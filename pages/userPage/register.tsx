@@ -51,7 +51,7 @@ export default function Register() {
         };
 
         try {
-            await axios.post('hhttps://b084-163-13-201-95.ngrok-free.app/api/register/', data);
+            await axios.post('https://b084-163-13-201-95.ngrok-free.app/api/register/', data);
             console.log('註冊成功');
             setShowModal(true); // 設定彈出視窗的顯示狀態為 true
         } catch (error) {
