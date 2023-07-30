@@ -43,12 +43,15 @@ export default function Register() {
         const form = e.currentTarget;
         const formData = new FormData(form);
 
+
         const data = {
             name: formData.get('name'),
             email: formData.get('email'),
             password: formData.get('password'),
             phone: formData.get('phone'),
         };
+
+        console.log(JSON.stringify(data));
 
         try {
             await axios.post('https://b084-163-13-201-95.ngrok-free.app/api/register/', JSON.stringify(data) , {
