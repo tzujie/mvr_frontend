@@ -49,8 +49,8 @@ export default function Accountinfo() {
                 {userData.length > 0 ? (
                     <div>
                         {userData.map((user: any) => (
-                            <div key={user.id} style={{ textAlign: 'center' }}>
-                                <p style={{ color: 'white', fontSize: '22px' }}>ID: {user.id}</p>
+                            <div key={user.name} style={{ textAlign: 'center' }}>
+                                <p style={{ color: 'white', fontSize: '22px' }}>Name: {user.name}</p>
                                 <p style={{ color: 'white', fontSize: '22px' }}>Email: {user.email}</p>
                                 <p style={{ color: 'white', fontSize: '22px' }}>Phone: {user.phone}</p>
                                 {"用戶信息"}
