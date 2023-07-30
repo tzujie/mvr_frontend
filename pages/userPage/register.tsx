@@ -36,7 +36,7 @@ function Password() {
 
 export default function Register() {
     const router = useRouter();
-    const [showModal, setShowModal] = useState(false); // 控制彈出視窗的顯示狀態
+    const [showModal, setShowModal] = useState(false); 
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -44,7 +44,7 @@ export default function Register() {
         const formData = new FormData(form);
 
         const data = {
-            id: formData.get('userID'),
+            name: formData.get('name'),
             email: formData.get('email'),
             password: formData.get('password'),
             phone: formData.get('phone'),
@@ -57,14 +57,14 @@ export default function Register() {
                 }
             });
             console.log('註冊成功');
-            setShowModal(true); // 設定彈出視窗的顯示狀態為 true
+            setShowModal(true); //
         } catch (error) {
             console.log('An error occurred:', error);
         }
     };
 
     const handleCloseModal = () => {
-        setShowModal(false); // 設定彈出視窗的顯示狀態為 false
+        setShowModal(false); // 
         router.push('/'); 
     };
 
@@ -86,7 +86,7 @@ export default function Register() {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicUserID">
                             <Form.Label>用戶ID</Form.Label>
-                            <Form.Control required type="text" placeholder="輸入用戶ID" name="userID" />
+                            <Form.Control required type="text" placeholder="輸入用戶ID" name="name" />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicPhone">
                             <Form.Label>電話號碼</Form.Label>
