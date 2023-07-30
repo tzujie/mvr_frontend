@@ -51,7 +51,7 @@ export default function Register() {
         };
 
         try {
-            await axios.post('https://b084-163-13-201-95.ngrok-free.app/api/register/', data, {
+            await axios.post('https://b084-163-13-201-95.ngrok-free.app/api/register/', JSON.stringify(data) , {
                 headers: {
                     'Content-Type': 'application/json'
                 }
