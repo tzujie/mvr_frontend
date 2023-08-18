@@ -1,28 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import styles from './successPage.module.css'; 
 
 const SuccessPage: React.FC = () => {
-    const containerStyle = {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-        backgroundColor: '#f5f5f5'
-    };
+    const [isLoading, setIsLoading] = useState(true);
 
-    const messageStyle = {
-        padding: '20px 40px',
-        borderRadius: '5px',
-        backgroundColor: '#4caf50',  // 綠色代表成功
-        color: '#fff',
-        fontSize: '24px',
-        boxShadow: '0px 0px 15px rgba(0, 0, 0, 0.2)'
-    };
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 2000); 
+
+        return () => clearTimeout(timer); 
+    }, []);
 
     return (
-        <div style={containerStyle}>
-            <div style={messageStyle}>
-                你已儲值成功！
-            </div>
+        <div className={styles.container}>
+            {isLoading ? (
+                <div className={styles.loadingContainer}>
+                    <div className={styles.loader}></div>
+                    <p style={{ marginTop: 20, color: 'white', fontSize: '24px', fontWeight: 'bold' }}>Please Wait...</p>
+
+                </div>
+            ) : (
+                <div>
+                    儲值成功！
+                </div>
+            )}
+
         </div>
     );
 };

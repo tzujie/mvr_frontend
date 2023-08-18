@@ -46,7 +46,7 @@ export default function Login() {
         };
 
         try {
-            // 將此處的 URL 改為您的 ngrok URL
+            
             await axios.post('https://b084-163-13-201-95.ngrok-free.app/api/login/', data, {
                 headers: {
                     'Content-Type': 'application/json'
