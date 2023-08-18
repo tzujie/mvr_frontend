@@ -21,9 +21,26 @@ const SuccessPage: React.FC = () => {
 
                 </div>
             ) : (
-                <div>
-                    儲值成功！
-                </div>
+                    <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        height: '100vh',
+                        
+                    }}>
+                        <p style={{
+                            padding: '20px 40px',
+                            borderRadius: '8px',
+                            color: 'white',
+                            fontSize: '24px',
+                            fontWeight: 'bold',
+                            backgroundColor: '#4CAF50', 
+                            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'  
+                        }}>
+                            你已儲值成功！
+                        </p>
+                    </div>
+
             )}
 
         </div>

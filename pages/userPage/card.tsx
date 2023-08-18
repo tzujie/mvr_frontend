@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import styles from './style.module.css';
 import { useRouter } from 'next/router';
 
+import Image from 'next/image';
+
 const RechargePage: React.FC = () => {
     const router = useRouter(); 
     const [cardNumber, setCardNumber] = useState<string>('');
@@ -11,7 +13,7 @@ const RechargePage: React.FC = () => {
     const [cvv, setCvv] = useState<string>('');
 
     const [isCvvFocused, setIsCvvFocused] = useState<boolean>(false);
-    const years = Array.from({ length: 31 }, (_, i) => 2000 + i);
+    const years = Array.from({ length: 31 }, (_, i) => 2018 + i);
 
     const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         let value = e.target.value.replace(/\s+/g, '').replace(/(\d{4})/g, '$1 ').trim();
@@ -74,6 +76,7 @@ const RechargePage: React.FC = () => {
                         
                         <div className={styles['cvv-box']}>{cvv.padEnd(3, '#')}</div>
                     </div>
+                    <Image src="/creditcard/visa.png" alt="Visa Logo" width={60} height={40} className={styles.visaLogo} />
                 </div>
 
                 <form onSubmit={handleSubmit}>
@@ -84,6 +87,7 @@ const RechargePage: React.FC = () => {
                             value={userID}
                             onChange={(e) => setUserID(e.target.value)}
                             placeholder="Enter your ID"
+                            required
                         />
                     </div>
 
@@ -94,6 +98,7 @@ const RechargePage: React.FC = () => {
                             value={totalAmount}
                             onChange={(e) => setTotalAmount(e.target.value)}
                             placeholder="Enter amount to recharge"
+                            required
                         />
                     </div>
 
@@ -104,7 +109,11 @@ const RechargePage: React.FC = () => {
                             maxLength={19}  // 16 digits + 3 spaces
                             value={cardNumber}
                             onChange={handleCardNumberChange}
+                            pattern="\d{4} \d{4} \d{4} \d{4}"
+                            title="Card number should have 16 digits in format: XXXX XXXX XXXX XXXX"
+                            required
                         />
+
 
                     </div>
 
@@ -114,6 +123,7 @@ const RechargePage: React.FC = () => {
                             type="text"
                             value={cardHolderName}
                             onChange={(e) => setCardHolderName(e.target.value)}
+                            required
                         />
                     </div>
 
@@ -146,6 +156,7 @@ const RechargePage: React.FC = () => {
                             <select
                                 value={expirationYear}
                                 onChange={(e) => setExpirationYear(e.target.value)}
+                                required
                             >
                                 <option value="yy" disabled>YY</option>
                                 {years.map(year => <option key={year} value={year}>{year}</option>)}
@@ -163,6 +174,7 @@ const RechargePage: React.FC = () => {
                                 onChange={(e) => setCvv(e.target.value)}
                                 onFocus={() => setIsCvvFocused(true)}
                                 onBlur={() => setIsCvvFocused(false)}
+                                required
                             />
                         </div>
                     </div>

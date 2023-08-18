@@ -25,6 +25,11 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
+    "/userPage/card": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/userPage/card.js"
+    ],
     "/userPage/successpage": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",

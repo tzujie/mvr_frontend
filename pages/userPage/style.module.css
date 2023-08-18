@@ -5,6 +5,13 @@
 .container .card-container .back .box span {
     color: #fff;
 }
+.visaLogo {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    height: 40px;
+    z-index: 10;
+}
 .container .card-container .front .expiration .exp-month,
 .container .card-container .front .expiration .exp-year {
     color: #fff;
@@ -21,7 +28,7 @@
     padding: 0;
     box-sizing: border-box;
     text-transform: uppercase;
-    /* ... (保持其他代碼不變) ... */
+    
 }
 
 .container {
@@ -73,7 +80,7 @@
 
 .container form .submit-btn {
     width: 100%;
-    background: linear-gradient(45deg, #003366, #000080);
+    background: linear-gradient(45deg, #3d6892, #642284);
     margin-top: 20px;
     padding: 10px;
     font-size: 20px;
@@ -81,6 +88,7 @@
     border-radius: 10px;
     cursor: pointer;
     transition: .2s linear;
+    border: none;
 }
 
 .container form .submit-btn:hover {
@@ -101,7 +109,7 @@
     width: 100%;
     top: 0;
     left: 0;
-    background: linear-gradient(45deg, #003366, #000080);
+    background: linear-gradient(45deg, #6e9fcf, #2a1b76);
     border-radius: 5px;
     backface-visibility: hidden;
     box-shadow: 0 15px 25px rgb(255, 253, 253);
