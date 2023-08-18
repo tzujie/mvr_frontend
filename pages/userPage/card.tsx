@@ -49,7 +49,7 @@ const RechargePage: React.FC = () => {
             console.log(data);
 
            
-            router.push('/successpage'); 
+            router.push('/userPage/successpage');
         } catch (error) {
             console.error("There was an error updating the money:", error);
         }
