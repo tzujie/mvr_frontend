@@ -46,6 +46,12 @@ export default function TopNavbar() {
                                 <span className="fs-5 fw-bolder text-white">{userEmail ? userEmail : '設定'}</span>
                             </Nav.Link>
                         </Link>
+                        <Link href="/userPage/card" legacyBehavior passHref>
+                            <Nav.Link>
+                                <span className="fs-5 fw-bolder text-white">儲值</span>
+                            </Nav.Link>
+                        </Link>
+
                     </Nav>
                 </Navbar.Collapse>
             </Container>

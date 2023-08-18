@@ -1,0 +1,171 @@
+import React, { useState } from 'react';
+import styles from './style.module.css';
+
+const RechargePage: React.FC = () => {
+    const [cardNumber, setCardNumber] = useState<string>('');
+    const [cardHolderName, setCardHolderName] = useState<string>('');
+    const [expirationMonth, setExpirationMonth] = useState<string>('mm');
+    const [expirationYear, setExpirationYear] = useState<string>('yy');
+    const [cvv, setCvv] = useState<string>('');
+
+    const [isCvvFocused, setIsCvvFocused] = useState<boolean>(false);
+    const years = Array.from({ length: 31 }, (_, i) => 2000 + i);
+    const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        let value = e.target.value.replace(/\s+/g, '').replace(/(\d{4})/g, '$1 ').trim();
+        setCardNumber(value);
+    };
+    const formatCardNumber = (number: string) => {
+        const cleanedNumber = number.replace(/\D+/g, '');
+        let formatted = cleanedNumber;
+
+        while (formatted.length < 16) {
+            formatted += '#';
+        }
+
+        return formatted.replace(/(.{4})/g, '$1 ').trim();
+    };
+    const [userID, setUserID] = useState<string>('');
+    const [totalAmount, setTotalAmount] = useState<string>('');
+
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        try {
+            const response = await fetch('https://192e-163-13-201-95.ngrok-free.app/api/update_money/', {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    id: userID,
+                    money: totalAmount,
+                }),
+            });
+
+            const data = await response.json();
+            console.log(data);
+        } catch (error) {
+            console.error("There was an error updating the money:", error);
+        }
+    };
+
+    return (
+        <div>
+            <div className={styles.container}>
+                <div className={styles['card-container']}>
+                    <div className={`${styles.front} ${isCvvFocused ? styles.flipped : ''}`}>
+                
+                        <div className={styles['card-number-box']}>{formatCardNumber(cardNumber)}</div>
+                        <div className={styles['card-holder-name']}>{cardHolderName || 'full name'}</div>
+                        <div className={styles.expiration}>
+                            <span className={styles['exp-month']}>{expirationMonth}</span>
+                            <span className={styles['exp-separator']}>/</span>
+                            <span className={styles['exp-year']}>{expirationYear}</span>
+                        </div>
+                    </div>
+
+                    <div className={`${styles.back} ${isCvvFocused ? styles.flipped : ''}`}>
+                        
+                        <div className={styles['cvv-box']}>{cvv.padEnd(3, '#')}</div>
+                    </div>
+                </div>
+
+                <form onSubmit={handleSubmit}>
+                    <div className={styles.inputBox}>
+                        <span>User ID</span>
+                        <input
+                            type="number"
+                            value={userID}
+                            onChange={(e) => setUserID(e.target.value)}
+                            placeholder="Enter your ID"
+                        />
+                    </div>
+
+                    <div className={styles.inputBox}>
+                        <span>Total Amount</span>
+                        <input
+                            type="number"
+                            value={totalAmount}
+                            onChange={(e) => setTotalAmount(e.target.value)}
+                            placeholder="Enter amount to recharge"
+                        />
+                    </div>
+
+                    <div className={styles.inputBox}>
+                        <span>card number</span>
+                        <input
+                            type="text"
+                            maxLength={19}  // 16 digits + 3 spaces
+                            value={cardNumber}
+                            onChange={handleCardNumberChange}
+                        />
+
+                    </div>
+
+                    <div className={styles.inputBox}>
+                        <span>card holder</span>
+                        <input
+                            type="text"
+                            value={cardHolderName}
+                            onChange={(e) => setCardHolderName(e.target.value)}
+                        />
+                    </div>
+
+                    <div className={styles.flexbox}>
+                        <div className={styles.inputBox}>
+                            <span>expiration mm</span>
+                            <select
+                                value={expirationMonth}
+                                onChange={(e) => setExpirationMonth(e.target.value)}
+                            >
+                                <option value="mm" disabled>MM</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>                              
+                                <option value="02">03</option>
+                                <option value="02">04</option>
+                                <option value="02">05</option>
+                                <option value="02">06</option>
+                                <option value="02">07</option>
+                                <option value="02">08</option>
+                                <option value="02">09</option>
+                                <option value="02">10</option>
+                                <option value="02">11</option>
+                                <option value="12">12</option>
+                            </select>
+
+                        </div>
+
+                        <div className={styles.inputBox}>
+                            <span>expiration yy</span>
+                            <select
+                                value={expirationYear}
+                                onChange={(e) => setExpirationYear(e.target.value)}
+                            >
+                                <option value="yy" disabled>YY</option>
+                                {years.map(year => <option key={year} value={year}>{year}</option>)}
+                            </select>
+
+                        </div>
+                        
+
+                        <div className={styles.inputBox}>
+                            <span>cvv</span>
+                            <input
+                                type="text"
+                                maxLength={3}
+                                value={cvv}
+                                onChange={(e) => setCvv(e.target.value)}
+                                onFocus={() => setIsCvvFocused(true)}
+                                onBlur={() => setIsCvvFocused(false)}
+                            />
+                        </div>
+                    </div>
+
+                    <input type="submit" value="submit" className={styles['submit-btn']} />
+                </form>
+            </div>
+        </div>
+    );
+};
+
+export default RechargePage;

@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Carousel  from 'react-bootstrap/Carousel'
 import Image from 'next/legacy/image';
 import ListGroup from 'react-bootstrap/ListGroup';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function PhotoCarousel()
 {
