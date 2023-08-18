@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import styles from './style.module.css';
+import { useRouter } from 'next/router';
 
 const RechargePage: React.FC = () => {
+    const router = useRouter(); 
     const [cardNumber, setCardNumber] = useState<string>('');
     const [cardHolderName, setCardHolderName] = useState<string>('');
     const [expirationMonth, setExpirationMonth] = useState<string>('mm');
@@ -10,10 +12,12 @@ const RechargePage: React.FC = () => {
 
     const [isCvvFocused, setIsCvvFocused] = useState<boolean>(false);
     const years = Array.from({ length: 31 }, (_, i) => 2000 + i);
+
     const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         let value = e.target.value.replace(/\s+/g, '').replace(/(\d{4})/g, '$1 ').trim();
         setCardNumber(value);
     };
+
     const formatCardNumber = (number: string) => {
         const cleanedNumber = number.replace(/\D+/g, '');
         let formatted = cleanedNumber;
@@ -27,9 +31,8 @@ const RechargePage: React.FC = () => {
     const [userID, setUserID] = useState<string>('');
     const [totalAmount, setTotalAmount] = useState<string>('');
 
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {event.preventDefault();
+        
         try {
             const response = await fetch('https://192e-163-13-201-95.ngrok-free.app/api/update_money/', {
                 method: 'PATCH',
@@ -44,6 +47,9 @@ const RechargePage: React.FC = () => {
 
             const data = await response.json();
             console.log(data);
+
+           
+            router.push('/successpage'); 
         } catch (error) {
             console.error("There was an error updating the money:", error);
         }
