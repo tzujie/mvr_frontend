@@ -1,62 +1,122 @@
-import React, { useState, useEffect } from 'react';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+// TopNavbar.js
 import Link from 'next/link';
 import { FaUserAlt } from 'react-icons/fa';
 import Cookies from 'js-cookie';
+import React, { useState } from 'react';
 
 export default function TopNavbar() {
+    const isUserLoggedIn = Cookies.get('loggedIn');
     const [userEmail, setUserEmail] = useState('');
-    type TopNavbarProps = {
-        userEmail: string;
-        handleLogout: () => void;
+    const [isLoginPopupVisible, setLoginPopupVisible] = useState(false); 
+    const handleCloseClick = () => {
+        setLoginPopupVisible(false); 
+    };
+    const [activeForm, setActiveForm] = useState('login'); // 'login' 或 'register'
+    
+
+    const handlePopupClick = () => {
+        setLoginPopupVisible(!isLoginPopupVisible); 
     };
 
     return (
-        <Navbar className="bg-secondary">
-            <Container>
-                <Navbar.Brand>
-                    <h1 className="text-white">MVR</h1>
-                </Navbar.Brand>
-                <Navbar.Text className="px-4 text-white fw-bolder">
-                    <h4>Music in your mind, Space on your definition</h4>
-                </Navbar.Text>
-                <Navbar.Toggle />
-                <Navbar.Collapse className="justify-content-end">
-                    <Nav>
-                        <Link href="/" legacyBehavior passHref>
-                            <Nav.Link>
-                                <span className="fs-5 fw-bolder text-white">首頁</span>
-                            </Nav.Link>
-                        </Link>
-                        <Link href="/features" legacyBehavior passHref>
-                            <Nav.Link>
-                                <span className="fs-5 fw-bolder text-white">功能介紹</span>
-                            </Nav.Link>
-                        </Link>
-                        <Link href="/introduceTeam" legacyBehavior passHref>
-                            <Nav.Link>
-                                <span className="fs-5 fw-bolder text-white">團隊成員</span>
-                            </Nav.Link>
-                        </Link>
-                        <Link href="/userPage/login" legacyBehavior passHref>
-                            <Nav.Link>
-                                <FaUserAlt className="mx-1 mb-2 text-white" />
-                                <span className="fs-5 fw-bolder text-white">{userEmail ? userEmail : '設定'}</span>
-                            </Nav.Link>
-                        </Link>
-                        <Link href="/userPage/card" legacyBehavior passHref>
-                            <Nav.Link>
-                                <span className="fs-5 fw-bolder text-white">儲值</span>
-                            </Nav.Link>
-                        </Link>
+        <header>
+            <h2 className="logo">MVR</h2>
 
-                    </Nav>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
+            <nav className="navigation">
+                <Link href="/">
+                    <span>首頁</span>
+                </Link>
+                <Link href="/features">
+                    <span>功能介紹</span>
+                </Link>
+                <Link href="/introduceTeam">
+                    <span>團隊成員</span>
+                </Link>
+
+                <Link href="/userPage/card">
+                    <span>儲值</span>
+                </Link>
+                <Link href={isUserLoggedIn ? "/userPage/dashboard" : "/userPage/lr"}>
+                    <span>
+                        <FaUserAlt className="mx-1 mb-2" />
+                        {isUserLoggedIn ? "我的帳戶" : "登入"}
+                    </span>
+                </Link>
+                {/*
+                    <button className="btnLogin-popup" onClick={handlePopupClick}>Login</button>
+                */}
+
+                </nav>
+
+            <style jsx>{`
+                header {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    padding: 20px 100px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    z-index: 1100;
+                    background-color: #000; 
+                .logo {
+                    color: white;
+                }
+                .navigation a {
+                   
+                    margin-left: 20px;
+                    color: white;
+                    text-decoration: none;
+                }
+                .navigation .btnLogin-popup {
+                    
+                    margin-left: 20px;
+                    background-color: transparent;
+                    color: white;
+                    border: 2px solid white;
+                    border-radius: 5px;
+                    padding: 5px 15px;
+                }
+
+                .navigation .btnLogin-popup:hover {
+                    background-color: white;
+                    color: black;
+                }
+
+                .navigation span {
+                position: relative;
+                font-size: 1.3em;
+                color: #fff;
+                text-decoration: none;
+                font-weight: 500;
+                margin-left: 40px;
+                display: inline-block;  
+                cursor: pointer;  
+            }
+
+            .navigation span::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: -6px;
+                width: 100%;
+                height: 3px;
+                background: #fff;
+                border-radius: 5px;
+                transform-origin: right;
+                transform: scaleX(0);
+                transition: transform .5s;
+            }
+
+            .navigation span:hover::after {
+                transform: scaleX(1);
+            }
+
+            
+   
+
+            `}</style>
+        </header>
     );
-
-    
 }

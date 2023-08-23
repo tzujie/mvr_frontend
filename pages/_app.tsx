@@ -1,19 +1,17 @@
 import type { AppProps } from 'next/app';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import TopNavbar from './components/topnavbar';
-import { useRouter } from 'next/router';
+
+import '../styles/globals.css';
 
 export default function App({ Component, pageProps }: AppProps) {
-  const router = useRouter();
-
-  const handleRedirectToSuccess = () => {
-    router.push('/success');
-  };
-
   return (
     <>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/css/ionicons.min.css" />
       <TopNavbar />
-      <Component {...pageProps} onRedirectToSuccess={handleRedirectToSuccess} />
+      <div className="page-content">
+        <Component {...pageProps} />
+      </div>
     </>
   );
 }

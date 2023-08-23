@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { BiShow } from 'react-icons/bi';
 import axios, { AxiosError } from 'axios';
 import Cookies from 'js-cookie';
+import styles from './loginPage.module.css';
+import TopNavbar from '../components/topnavbar';
 
 function Password() {
     const [passwordShown, setPasswordShown] = useState(false);
@@ -16,18 +18,17 @@ function Password() {
 
     return (
         <>
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Group className={`mb-3 ${styles.inputbox}`} controlId="formBasicPassword">
                 <div className="d-flex align-items-center mb-1">
                     <Form.Label className="flex-grow-1">密碼</Form.Label>
-                    <Button variant="light" onClick={togglePassword}>
+                    {/*<Button variant="light" onClick={togglePassword}>
                         <BiShow />
-                    </Button>
+    </Button>*/}
                 </div>
                 <Form.Control
                     required
                     type={passwordShown ? 'text' : 'password'}
                     name="password"
-                    placeholder="輸入密碼"
                 />
             </Form.Group>
         </>
@@ -46,7 +47,7 @@ export default function Login() {
         };
 
         try {
-            
+
             await axios.post('https://b084-163-13-201-95.ngrok-free.app/api/login/', data, {
                 headers: {
                     'Content-Type': 'application/json'
@@ -72,30 +73,42 @@ export default function Login() {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main>
+            
+            <main className={styles.container}>
                 <div className="d-flex justify-content-center mt-4">
-                    <Form onSubmit={handleLogin} className="bg-white rounded w-25 p-3">
-                        <h2 className="text-center mb-3">使用者登入</h2>
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Label>帳號</Form.Label>
+                    <Form onSubmit={handleLogin} className={styles.formBox}>
+                        <h2 className={styles.formBoxh2}>Login</h2>
+                        
+
+                        <Form.Group className={styles.inputbox} controlId="formBasicEmail">
+                            <Form.Label>Email</Form.Label>
                             <Form.Control
                                 required
                                 type="email"
                                 name="account"
-                                placeholder="輸入帳號"
+                                className="my-input"
                             />
+
                         </Form.Group>
+
                         <Password />
-                        <div className="d-flex justify-content-around gap-5">
-                            <Link href="/userPage/register" passHref>
-                                <Button variant="primary" className="w-50">
-                                    註冊帳號
-                                </Button>
-                            </Link>
-                            <Button variant="primary" type="submit" className="w-50">
-                                登入
+                        
+                        <div>
+                            <Button variant="primary" type="submit" className={styles.btn}>
+                                Login
                             </Button>
                         </div>
+
+                        <div className={styles.loginregister}>
+                            <p>Don't have an account?
+                                <Link href="/userPage/register">
+                                    <span className={styles.registerLink}>Register</span>
+                                </Link>
+                            </p>
+                        </div>
+                        
+
+                       
                     </Form>
                 </div>
             </main>

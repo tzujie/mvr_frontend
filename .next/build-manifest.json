@@ -25,15 +25,25 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
+    "/features": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/features.js"
+    ],
+    "/introduceTeam": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/introduceTeam.js"
+    ],
     "/userPage/card": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/userPage/card.js"
     ],
-    "/userPage/successpage": [
+    "/userPage/lr": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/userPage/successpage.js"
+      "static/chunks/pages/userPage/lr.js"
     ]
   },
   "ampFirstPages": []

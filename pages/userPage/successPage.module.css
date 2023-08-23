@@ -1,27 +1,80 @@
+/* successPage.module.css */
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100vw;
     height: 100vh;
+    overflow: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    position: relative;
+}
+.messageContainer,
+.successContainer {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.confirmBox {
+    height: 250px;
+    padding: 20px 40px;
+    border-radius: 20px;
+
+    color: rgb(249, 246, 255);
     font-size: 24px;
+
+    font-weight: bold;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .5);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+}
+
+.confirmText {
+    margin-bottom: 20px;
+}
+
+.confirmButton {
+    padding: 10px 20px;
+    font-size: 18px;
+
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: #4c7aaf;
+    color: white;
+}
+
+.loadingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
 .loader {
     border: 16px solid #f3f3f3;
+    /* Light grey */
     border-top: 16px solid #3498db;
+    /* Blue */
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
 }
-.loadingContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
 
-}
 @keyframes spin {
     0% {
         transform: rotate(0deg);
@@ -29,5 +82,60 @@
 
     100% {
         transform: rotate(360deg);
+    }
+}
+
+.loadingText {
+    margin-top: 20px;
+    color: white;
+    font-size: 24px;
+
+    font-weight: bold;
+}
+.successBox {
+    position: absolute;
+    top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+    padding: 20px 40px;
+    border-radius: 20px;
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .5);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.successText {
+    position: absolute;
+    bottom: 58%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+.progressBar {
+    width: 0%;
+    height: 5px;
+    font-weight: 600;
+    background-color: #4c7aaf;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: loadProgress 2s forwards;
+}
+
+@keyframes loadProgress {
+    100% {
+        width: 100%;
     }
 }

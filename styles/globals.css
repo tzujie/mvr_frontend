@@ -3,3 +3,11 @@
 /* body {
     font-family: 'Noto Sans TC';
 } */
+
+body {
+    background-color: #fff;
+}
+.page-content {
+    padding-top: 84px;
+    /* 根據你的 Navbar 的實際高度調整 */
+}
