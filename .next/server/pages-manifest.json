@@ -4,6 +4,6 @@
   "/_document": "pages/_document.js",
   "/userPage/lr": "pages/userPage/lr.js",
   "/userPage/card": "pages/userPage/card.js",
-  "/introduceTeam": "pages/introduceTeam.js",
-  "/features": "pages/features.js"
+  "/": "pages/index.js",
+  "/userPage/successpage": "pages/userPage/successpage.js"
 }
