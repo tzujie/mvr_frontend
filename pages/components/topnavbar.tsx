@@ -3,8 +3,10 @@ import Link from 'next/link';
 import { FaUserAlt } from 'react-icons/fa';
 import Cookies from 'js-cookie';
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 
 export default function TopNavbar() {
+    const router = useRouter();
     const isUserLoggedIn = Cookies.get('loggedIn');
     const [userEmail, setUserEmail] = useState('');
     const [isLoginPopupVisible, setLoginPopupVisible] = useState(false); 
@@ -16,6 +18,11 @@ export default function TopNavbar() {
 
     const handlePopupClick = () => {
         setLoginPopupVisible(!isLoginPopupVisible); 
+    };
+    const handleLogout = () => {
+        Cookies.remove('loggedIn'); 
+        Cookies.remove('userEmail');
+        router.push('/'); 
     };
 
     return (
