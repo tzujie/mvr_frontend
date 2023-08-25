@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router'; // <-- 導入這個
+import { useRouter } from 'next/router'; 
 import styles from './successPage.module.css';
 
 const SuccessPage: React.FC = () => {
