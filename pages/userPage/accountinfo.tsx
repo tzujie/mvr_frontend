@@ -65,40 +65,43 @@ export default function AccountInfo() {
                         flex-direction: column;
                         align-items: center;
                         font-size: 1.2rem;
+                        height: 100vh; /* Fill the entire viewport height */
+                        font-size: 1.5rem;
                     }
 
                     .title {
                         text-align: center;
-                        color: #4A90E2;
+                        color:#4d86b3;
                         margin-top: 2rem;
-                        font-size: 2.5rem;
-                        border-bottom: 2px solid #4A90E2;
-                        padding-bottom: 1rem;
+                        font-size: 3rem; 
+                        border-bottom: 3px solid #4d86b3;
+                        padding-bottom: 1.5rem;
                     }
 
                     .account {
                         background-color: #F5F5F5;
-                        padding: 25px;
-                        margin: 25px auto;
-                        border-radius: 10px;
+                        padding: 30px; 
+                        margin: 30px auto; 
+                        border-radius: 12px; 
+                        width: 70%; 
                         max-width: 650px;
-                        box-shadow: 0px 3px 15px rgba(0,0,0,0.1);
-                        border-left: 6px solid #4A90E2;
+                        box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
+                        border-left: 8px solid #4d86b3; 
                     }
 
                     h2 {
                         color: #333;
-                        font-size: 1.5rem;
-                        margin-bottom: 1rem;
+                        font-size: 2rem;
+                        margin-bottom: 1.5rem;
                     }
 
                     p {
                         color: #666;
-                        margin-bottom: 0.7rem;
+                        margin-bottom: 1rem; 
                     }
 
                     strong {
-                        color: #4A90E2;
+                        color: #4d86b3;
                     }
                 `}</style>
             </main>

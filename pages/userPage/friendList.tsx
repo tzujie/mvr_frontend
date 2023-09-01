@@ -23,12 +23,20 @@ export default function FriendList() {
             </main>
 
             <style jsx>{`
+            html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
                 .container {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
                     justify-content: center;
                     height: 100vh;
+                    width: 100％!important;
                     background-color: #f5f5f5;
                 }
 

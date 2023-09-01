@@ -61,7 +61,8 @@ const LoginRegister: React.FC = () => {
             phone: phone,
             gender: gender 
         };
-
+        console.log('Sending data:', data);
+        
         try {
             await axios.post('https://192e-163-13-201-95.ngrok-free.app/api/register/', data, {
                 headers: {

@@ -71,22 +71,39 @@ export default function PasswordSetting() {
             </main>
 
             <style jsx>{`
+                    
+            
+          
                 .container {
+                    height: 100%;
+                    width: 100%;
                     position: relative;
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     height: 100vh;
                     background-color: #e6e6e6;
-                    z-index: 1;
                 }
 
                 .blur {
+                    padding: 20px 60px;
+                    border-radius: 20px;
+                    width: 600px;
+                    height: 500px;
+                    color: black;
+                    font-size: 24px;
+
+                    font-weight: bold;
+                    background: transparent;
+                    border: 2px solid rgba(255, 255, 255, .5);
+                    backdrop-filter: blur(20px);
+                    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+
                     background-color: rgba(255, 255, 255, 0.9);
                     border-radius: 10px;
-                    backdrop-filter: blur(10px);
-                    border: 2px solid rgba(255, 255, 255, .5);
-                    box-shadow: 0 0 30px rgba(0, 0, 0, .1);
+                    
+                  
+                    
                     padding: 40px;
                 }
 
@@ -94,65 +111,75 @@ export default function PasswordSetting() {
                     text-align: center;
                     color: #162938;
                     font-weight: bold;
-                    margin-bottom: 30px;
+                    margin-bottom: 20px;
                 }
-
                 .submitBtn {
+                    font-size: 0.8em;
                     width: 100%;
-                    padding: 15px;
+                    padding: 8px;
                     border: none;
                     border-radius: 5px;
                     background-color: #4d86b3;
                     color: #fff;
                     cursor: pointer;
                     font-weight: bold;
-                    transition: 0.3s ease;
-                    margin-top: 30px;
+                    transition: background-color 0.3s ease;
+                    margin-top: 20px;
                 }
 
                 .submitBtn:hover {
-                    transform: scale(1.05);
+                    background-color: #3a6c97;
                 }
 
                 .centerParagraph {
                     text-align: center;
                     margin-top: 20px;
+                    color: red;
                 }
 
                 .inputBox {
                     position: relative;
                     width: 100%;
-                    margin: 15px 0;
+                    margin: 30px 0;
+                    height: 50px; 
                 }
 
                 .inputBox input {
+                    font-size: 0.5em;   
                     width: 100%;
                     height: 45px;
                     background-color: transparent;
-                    border: 2px solid #162938;
-                    border-radius: 5px;
-                    padding: 10px;
-                    margin-top: 20px;
+                    border: none;
+                    border-bottom: 2px solid #162938;
+                    padding: 5px 0;
                     font-size: 1em;
+                    margin-top: 10px;  
+                    font-size: 0.9em;  
                     color: #162938;
+                    transition: border-color 0.3s ease;
+                }
+                 .inputBox input:focus {
+                    border-color:#162938;
+                    outline: none;
                 }
 
                 .inputBox label {
                     position: absolute;
-                    top: 5px;
-                    left: 15px;
-                    font-size: 1em;
+                    bottom: 5px;
+                    left: 0px;
+                    font-size: 0.5em;
                     color: #162938;
                     font-weight: 500;
-                    transition: .5s;
+                    pointer-events: none;
+                     transition: 0.3s, transform 0.3s;
                 }
 
                 .inputBox input:focus + label,
                 .inputBox input:not(:placeholder-shown) + label {
-                    top: -25px;
+                    transform: translateY(-25px); 
                     font-size: 0.75em;
+                    color: #162938;
                 }
-
                 .formBox {
                     padding: 20px 40px;
                     border-radius: 20px;

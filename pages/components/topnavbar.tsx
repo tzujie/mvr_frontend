@@ -32,7 +32,7 @@ export default function TopNavbar() {
                 <Link href="/userPage/card">
                     <span>儲值</span>
                 </Link>
-                <Link href={isUserLoggedIn ? "/userPage/account" : "/userPage/lr"}>
+                <Link href={isUserLoggedIn ? "/userPage/accountinfo" : "/userPage/lr"}>
                     <span onClick={isUserLoggedIn ? handleLogout : () => { }}>
                         <FaUserAlt className="mx-1 mb-2" />
                         {isUserLoggedIn ? "帳戶" : "登入"}

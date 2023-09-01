@@ -4,7 +4,6 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    /*background-image: url('/photoCarousel/login_pic.jpg');*/
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -113,7 +112,7 @@
 .centerParagraph {
     text-align: center;
     margin-top: 20px;
-    /* 可調整此值以達到適當的間距 */
+
 }
 
 .genderText{
