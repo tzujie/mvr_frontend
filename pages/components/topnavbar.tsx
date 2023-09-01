@@ -9,9 +9,10 @@ export default function TopNavbar() {
     const isUserLoggedIn = Boolean(Cookies.get('loggedIn'));
 
     const handleLogout = () => {
-        Cookies.remove('loggedIn');
-        Cookies.remove('userEmail');
-        router.push('/');
+        // Disabled logout functionality for now
+        // Cookies.remove('loggedIn');
+        // Cookies.remove('userEmail');
+        // router.push('/');
     };
 
     return (
@@ -31,10 +32,10 @@ export default function TopNavbar() {
                 <Link href="/userPage/card">
                     <span>儲值</span>
                 </Link>
-                <Link href={isUserLoggedIn ? "/" : "/userPage/lr"}>
+                <Link href={isUserLoggedIn ? "/userPage/account" : "/userPage/lr"}>
                     <span onClick={isUserLoggedIn ? handleLogout : () => { }}>
                         <FaUserAlt className="mx-1 mb-2" />
-                        {isUserLoggedIn ? "登出" : "登入"}
+                        {isUserLoggedIn ? "帳戶" : "登入"}
                     </span>
                 </Link>
             </nav>

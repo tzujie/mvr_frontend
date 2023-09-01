@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import styles from './successPage.module.css';
 
 const SuccessPage: React.FC = () => {
-    const router = useRouter(); // <-- 使用hook
+    const router = useRouter(); 
     const [isLoading, setIsLoading] = useState(false);
     const [showMessage, setShowMessage] = useState(true);
 

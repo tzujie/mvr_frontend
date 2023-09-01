@@ -9,7 +9,7 @@ const LoginRegister: React.FC = () => {
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
-
+    const [gender, setGender] = useState('');
     const switchToLogin = () => {
         resetInputs();
         setIsLogin(true);
@@ -59,6 +59,7 @@ const LoginRegister: React.FC = () => {
             email: email,
             password: password,
             phone: phone,
+            gender: gender 
         };
 
         try {
@@ -67,9 +68,11 @@ const LoginRegister: React.FC = () => {
                     'Content-Type': 'application/json'
                 }
             });
-            console.log('註冊成功');
+            window.alert('註冊成功!!');
+            window.location.replace('/');
         } catch (error) {
             console.log('An error occurred:', error);
+            window.alert('註冊失敗!!');
         }
     };
 
@@ -111,11 +114,24 @@ const LoginRegister: React.FC = () => {
                         <input name="phone" type="tel" value={phone} onChange={e => setPhone(e.target.value)} required placeholder=" " />
                         <label>Phone</label>
                     </div>
+                        <div >
+                            <label className={styles.genderText}>Gender</label>
+                            <label className={styles.genderLabel}>
+                                <input type="radio" name="gender" value="male" checked={gender === 'male'} onChange={e => setGender(e.target.value)} />
+                                Male
+                            </label>
+                            <label className={styles.genderLabel}>
+                                <input type="radio" name="gender" value="female" checked={gender === 'female'} onChange={e => setGender(e.target.value)} />
+                                Female
+                            </label>
+                        </div>
+
+
                     <button type="submit" className={styles.submitBtn}>Register</button>
-                    <p>
-                        Already have an account?{' '}
-                        <span className={styles.registerLink} onClick={switchToLogin}>Login</span>
-                    </p>
+                        <p className={styles.centerParagraph}>
+                            Already have an account?{' '}
+                            <span className={styles.registerLink} onClick={switchToLogin}>Login</span>
+                        </p>
                 </form>
             )}
         </div>

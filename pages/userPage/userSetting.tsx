@@ -1,30 +1,30 @@
-import React from 'react';
+import styles from './UserSetting.module.css'; 
 import ListGroup from 'react-bootstrap/ListGroup';
-import Head from 'next/head';
 import Link from 'next/link';
-import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
-import TopNavbar from '../components/topnavbar';
+import Cookies from 'js-cookie';
+import Head from 'next/head';
+
 
 function Menu({ handleLogout }: { handleLogout: () => void }) {
     return (
-        <ListGroup className='gap-2 m-3 bg-white'>
-            <Link href='accountSetting' passHref>
-                <ListGroup.Item action>更改帳號</ListGroup.Item>
-            </Link>
+        <div className={styles.windowPane}>
+        <ListGroup className={`${styles.menu} gap-2 m-3 bg-white`}>
             <Link href='passwordSetting' passHref>
-                <ListGroup.Item action>更改密碼</ListGroup.Item>
+                <ListGroup.Item action className={styles.menuItem}>更改密碼</ListGroup.Item>
             </Link>
             <Link href='friendList' passHref>
-                <ListGroup.Item action>好友清單</ListGroup.Item>
+                <ListGroup.Item action className={styles.menuItem}>好友清單</ListGroup.Item>
             </Link>
             <Link href='accountinfo' passHref>
-                <ListGroup.Item action>帳號資訊</ListGroup.Item>
+                <ListGroup.Item action className={styles.menuItem}>帳號資訊</ListGroup.Item>
             </Link>
-            <ListGroup.Item action onClick={handleLogout}>
-                登出
-            </ListGroup.Item>
+                <ListGroup.Item action onClick={handleLogout} className={styles.menuItem}>
+                    登出
+                </ListGroup.Item>
+
         </ListGroup>
+        </div>
     );
 }
 
@@ -32,12 +32,13 @@ export default function UserSetting() {
     const router = useRouter();
 
     const handleLogout = () => {
-        // 清除 cookies 中的使用者資料
-        Cookies.remove('userEmail');
-        // 跳回首頁
-        router.push('/');
-        // 或使用以下方式導航回首頁：
-        // window.location.replace('/');
+        if (window.confirm("確定要登出嗎？")) {  
+        
+            Cookies.remove('loggedIn');
+            Cookies.remove('userEmail');
+            router.push('/');
+            
+        }
     };
 
     return (
@@ -48,7 +49,7 @@ export default function UserSetting() {
                 <meta name='viewport' content='width=device-width, initial-scale=1' />
                 <link rel='icon' href='/favicon.ico' />
             </Head>
-            <main>
+            <main className={styles.container}>
                 <Menu handleLogout={handleLogout} />
             </main>
         </>
