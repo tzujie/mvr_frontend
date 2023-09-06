@@ -10,9 +10,10 @@ export default function PasswordSetting() {
     const [message, setMessage] = useState("");
 
     const handleChangePassword = async () => {
-        const userId = Cookies.get('userId'); // <-- 從Cookie中獲取使用者ID
+        const userId = Cookies.get('userId');
 
         if (!userId) {
+            console.log('userId:', userId);
             setMessage("User not authenticated.");
             return;
         }
@@ -23,13 +24,14 @@ export default function PasswordSetting() {
         }
 
         try {
-            const response = await axios.post("https://192e-163-13-201-95.ngrok-free.app/api/changePassword", {
-                userId,             // <-- 將userID添加到發送的資料中
+            const response = await axios.post("https://192e-163-13-201-95.ngrok-free.app/api/change＿password", {
+                userId,             
                 oldPassword,
                 newPassword,
             });
             setMessage(response.data.message);
         } catch (error) {
+            
             setMessage("Password change failed.");
         }
     };
