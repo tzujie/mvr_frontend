@@ -21,6 +21,9 @@ export default function AccountInfo() {
     useEffect(() => {
         const fetchAccountData = async () => {
             console.log("Fetching account data...");  
+            const userEmail = "tzdfsd@gmail.com";
+            console.log("User email for testing:", userEmail); 
+            /*
             const userEmail = Cookies.get('userEmail');
             console.log("User email from cookies:", userEmail); 
 
@@ -28,10 +31,10 @@ export default function AccountInfo() {
                 setError("Email not found in Cookies");
                 return;
             }
-
+*/
             try {
                 const response = await axios.get(`https://192e-163-13-201-95.ngrok-free.app/api/list_accounts/?email=${userEmail}`);
-                console.log("Response data:", response.data);  // And this one
+                console.log("Response data:", response.data);  
                 setAccountData(response.data);
 
             } catch (err) {
