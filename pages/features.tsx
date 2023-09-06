@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Head from 'next/head';
 
 const images = [
     { src: '/features_img/自訂樣貌.png', title: '自訂樣貌', description: '可以透過選單角色的膚色、臉部與衣服裝扮，讓使用者創造最貼近自己理想樣貌的分身，提升使用時的帶入感。' },
@@ -20,6 +21,10 @@ const ImageGallery: React.FC = () => {
     }, []);
 
     return (
+         <>
+            <Head>
+                <meta httpEquiv="Content-Language" content="zh-TW" />
+            </Head>
         <div className="gallery-container">
             {images.map((image, idx) => (
                 <div key={idx}
@@ -114,6 +119,7 @@ const ImageGallery: React.FC = () => {
                 }
             `}</style>
         </div>
+        </>
     );
 }
 

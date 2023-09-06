@@ -35,7 +35,7 @@ const LoginRegister: React.FC = () => {
         };
 
         try {
-            await axios.post('https://192e-163-13-201-95.ngrok-free.app/api/login/', data, {
+            const response = await axios.post('https://192e-163-13-201-95.ngrok-free.app/api/login/', data, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -44,6 +44,7 @@ const LoginRegister: React.FC = () => {
 
             Cookies.set('loggedIn', 'true', { expires: 7 });
             Cookies.set('userEmail', email, { expires: 7 });
+            Cookies.set('userId', response.data.user_id, { expires: 7 });
 
             window.location.replace('/userPage/userSetting');
         } catch (error: any) {
@@ -51,6 +52,7 @@ const LoginRegister: React.FC = () => {
             window.alert('登入失敗!!');
         }
     };
+
 
     const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -62,7 +64,7 @@ const LoginRegister: React.FC = () => {
             gender: gender 
         };
         console.log('Sending data:', data);
-        
+
         try {
             await axios.post('https://192e-163-13-201-95.ngrok-free.app/api/register/', data, {
                 headers: {

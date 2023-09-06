@@ -6,7 +6,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-
+    background-color: #e6e6e6;
     position: relative;
 }
 .messageContainer,
@@ -43,6 +43,7 @@
 
 .confirmText {
     margin-bottom: 20px;
+    color: rgb(19, 18, 18);
 }
 
 .confirmButton {
@@ -138,4 +139,59 @@
     100% {
         width: 100%;
     }
+}
+
+
+.verificationContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.verifyBox {
+    height: 250px;
+    padding: 20px 40px;
+    border-radius: 20px;
+    color: rgb(249, 246, 255);
+    font-size: 24px;
+    font-weight: bold;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .5);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.verificationInput {
+    padding: 10px 15px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 2px solid #4c7aaf;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 80%;
+    max-width: 300px;
+    outline: none;
+    color: #4c7aaf;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.verifyButton {
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: #4c7aaf;
+    color: white;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.verifyButton:hover {
+    background-color: #366993;
 }

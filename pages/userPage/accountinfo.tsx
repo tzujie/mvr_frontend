@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 export default function AccountInfo() {
     interface Account {
@@ -25,9 +26,15 @@ export default function AccountInfo() {
 
     useEffect(() => {
         const fetchAccountData = async () => {
+            const userId = Cookies.get('userId');  
+            if (!userId) {
+                setError("User not logged in");
+                return;
+            }
+
             try {
-                const response = await axios.get("https://192e-163-13-201-95.ngrok-free.app/list_accounts");
-                setAccountData(response.data);
+                const response = await axios.get(`https://192e-163-13-201-95.ngrok-free.app/api/list_accounts/${userId}/`);
+                setAccountData([response.data]);
             } catch (err) {
                 if (err instanceof Error) {
                     setError(err.message);
@@ -40,12 +47,14 @@ export default function AccountInfo() {
         fetchAccountData();
     }, []);
 
+
     return (
         <>
             <Head>
                 <title>MVR - Account Information</title>
                 <meta name="description" content="View account information" />
                 <link rel="icon" href="/favicon.ico" />
+                <meta httpEquiv="Content-Language" content="en" />
             </Head>
             <main className="main-content">
                 <h1 className="title">Account Information</h1>
