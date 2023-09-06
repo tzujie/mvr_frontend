@@ -32,8 +32,8 @@ export default function AccountInfo() {
             try {
                 const response = await axios.get(`https://192e-163-13-201-95.ngrok-free.app/api/list_accounts/?email=${userEmail}`);
                 console.log("Response data:", response.data);  // And this one
-                setAccountData([response.data]);
-                
+                setAccountData(response.data);
+
             } catch (err) {
                 if (err instanceof Error) {
                     setError(err.message);
