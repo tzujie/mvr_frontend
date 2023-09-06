@@ -24,7 +24,7 @@ export default function PasswordSetting() {
         }
 
         try {
-            const response = await axios.post("https://192e-163-13-201-95.ngrok-free.app/api/change＿password", {
+            const response = await axios.post("https://192e-163-13-201-95.ngrok-free.app/api/change_password/", {
                 userId,             
                 oldPassword,
                 newPassword,
