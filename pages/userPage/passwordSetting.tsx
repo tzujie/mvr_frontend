@@ -4,13 +4,15 @@ import axios from "axios";
 import Cookies from 'js-cookie';
 
 export default function PasswordSetting() {
+    const [userIdInput, setUserIdInput] = useState("");
     const [oldPassword, setOldPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [message, setMessage] = useState("");
 
     const handleChangePassword = async () => {
-        const userId = Cookies.get('userId');
+
+        const userId = userIdInput;
 
         if (!userId) {
             console.log('userId:', userId);
@@ -50,6 +52,17 @@ export default function PasswordSetting() {
             <main className="container">
                 <div className="blur formBox">
                     <h2 className="title">Change Password</h2>
+                    
+                    <div className="inputBox">
+                        <input
+                            type="text"
+                            required
+                            value={userIdInput}
+                            onChange={(e) => setUserIdInput(e.target.value)}
+                        />
+                        <label>User ID</label>
+                    </div>
+
                     <div className="inputBox">
                         <input
                             type="password"

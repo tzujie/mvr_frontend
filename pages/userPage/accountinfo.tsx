@@ -13,27 +13,22 @@ export default function AccountInfo() {
         start_login_date: string | null;
     }
 
-    const [accountData, setAccountData] = useState<Account[]>([{
-        id: 13,
-        name: "John Doe",
-        email: "johndoe@example.com",
-        phone: "1234567890",
-        login_count: 8,
-        start_login_date: null
-    }]);
+    const [accountData, setAccountData] = useState<Account[]>([]);
+
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchAccountData = async () => {
-            const userId = Cookies.get('userId');  
-            if (!userId) {
-                setError("User not logged in");
+            const userEmail = Cookies.get('userEmail');
+
+            if (!userEmail) {
+                setError("Email not found in Cookies");
                 return;
             }
 
             try {
-                const response = await axios.get(`https://192e-163-13-201-95.ngrok-free.app/api/list_accounts/${userId}/`);
+                const response = await axios.get(`https://192e-163-13-201-95.ngrok-free.app/api/list_accounts/?email=${userEmail}`);
                 setAccountData([response.data]);
             } catch (err) {
                 if (err instanceof Error) {

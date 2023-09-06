@@ -30,20 +30,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/explore": [
+    "/userPage/accountinfo": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/explore.js"
-    ],
-    "/introduceTeam": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/introduceTeam.js"
-    ],
-    "/userPage/card": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/userPage/card.js"
+      "static/chunks/pages/userPage/accountinfo.js"
     ],
     "/userPage/lr": [
       "static/chunks/webpack.js",
