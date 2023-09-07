@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 
 type AccountDataType = {
@@ -11,26 +11,23 @@ type AccountDataType = {
     last_login_date: string;
 };
 
-function test() {
+function Test() {
     const [accountData, setAccountData] = useState<AccountDataType | null>(null);
 
-    useEffect(() => {
-        async function fetchAccountData() {
-            try {
-                const response = await axios.get('https://192e-163-13-201-95.ngrok-free.app/api/list_accounts/?email=tzdfsd@gmail.com');
-                if (response.data && response.data.length > 0) {
-                    setAccountData(response.data[0]);
-                }
-            } catch (error) {
-                console.error("Failed to fetch account data:", error);
+    async function fetchAccountData() {
+        try {
+            const response = await axios.get('https://192e-163-13-201-95.ngrok-free.app/api/list_accounts/?email=tzdfsd@gmail.com');
+            if (response.data && response.data.length > 0) {
+                setAccountData(response.data[0]);
             }
+        } catch (error) {
+            console.error("Failed to fetch account data:", error);
         }
-
-        fetchAccountData();
-    }, []);
+    }
 
     return (
         <div style={{ backgroundColor: 'white' }}>
+            <button onClick={fetchAccountData}>獲取帳戶資訊</button>
             {accountData ? (
                 <>
                     <h1>帳戶資訊</h1>
@@ -39,13 +36,12 @@ function test() {
                     <p><strong>Phone:</strong> {accountData.phone}</p>
                     <p><strong>Login Count:</strong> {accountData.login_count}</p>
                     <p><strong>Last Login Date:</strong> {accountData.last_login_date}</p>
-                   
                 </>
             ) : (
-                <p>Loading account information...</p>
+                <p>點擊按鈕以獲取帳戶資訊。</p>
             )}
         </div>
     );
 }
 
-export default test;
+export default Test;
