@@ -1,42 +1,51 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const ListAccounts: React.FC = () => {
-    const [email, setEmail] = useState<string>('');
-    const [accounts, setAccounts] = useState<any[]>([]);
+type AccountDataType = {
+    id: number;
+    name: string;
+    email: string;
+    phone: string;
+    login_count: number;
+    start_login_date: string | null;
+    last_login_date: string;
+};
 
-    const handleSearch = async () => {
-        console.log("Search triggered with email:", email);
-        try {
-            const response = await axios.get(`https://192e-163-13-201-95.ngrok-free.app/api/list_accounts/?email=${email}`);
+function AccountInfo() {
+    const [accountData, setAccountData] = useState<AccountDataType | null>(null);
 
-            if (response.status === 200) {
-                setAccounts(response.data);
-            } else {
-                console.error("Error fetching accounts.");
+    useEffect(() => {
+        async function fetchAccountData() {
+            try {
+                const response = await axios.get('https://192e-163-13-201-95.ngrok-free.app/api/list_accounts/?email=tzdfsd@gmail.com');
+                if (response.data && response.data.length > 0) {
+                    setAccountData(response.data[0]);
+                }
+            } catch (error) {
+                console.error("Failed to fetch account data:", error);
             }
-        } catch (error) {
-            console.error("There was an error:", error);
         }
-    };
+
+        fetchAccountData();
+    }, []);
 
     return (
         <div>
-            <input
-                type="text"
-                value={email}
-                placeholder="Search by email..."
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            <button onClick={handleSearch}>Search</button>
-
-            <ul>
-                {accounts.map((account) => (
-                    <li key={account.id}>{account.email}</li>
-                ))}
-            </ul>
+            {accountData ? (
+                <>
+                    <h1>帳戶資訊</h1>
+                    <p><strong>Name:</strong> {accountData.name}</p>
+                    <p><strong>Email:</strong> {accountData.email}</p>
+                    <p><strong>Phone:</strong> {accountData.phone}</p>
+                    <p><strong>Login Count:</strong> {accountData.login_count}</p>
+                    <p><strong>Last Login Date:</strong> {accountData.last_login_date}</p>
+                    {/* ... You can continue displaying other fields similarly ... */}
+                </>
+            ) : (
+                <p>Loading account information...</p>
+            )}
         </div>
     );
-};
+}
 
-export default ListAccounts;
+export default AccountInfo;
