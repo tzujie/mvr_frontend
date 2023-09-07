@@ -30,7 +30,7 @@ function test() {
     }, []);
 
     return (
-        <div>
+        <div style={{ backgroundColor: 'white' }}>
             {accountData ? (
                 <>
                     <h1>帳戶資訊</h1>
@@ -39,7 +39,7 @@ function test() {
                     <p><strong>Phone:</strong> {accountData.phone}</p>
                     <p><strong>Login Count:</strong> {accountData.login_count}</p>
                     <p><strong>Last Login Date:</strong> {accountData.last_login_date}</p>
-                    {/* ... You can continue displaying other fields similarly ... */}
+                   
                 </>
             ) : (
                 <p>Loading account information...</p>
