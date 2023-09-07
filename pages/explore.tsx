@@ -79,7 +79,7 @@ export default function Explore() {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
-                <meta httpEquiv="Content-Language" content="en" />
+                <meta httpEquiv="Content-Language" content="zh-TW" />
             </Head>
             <main className="bg-white text-dark explore-page">
                 <div className='container'>
