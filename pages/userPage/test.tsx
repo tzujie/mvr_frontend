@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 
 const ListAccounts: React.FC = () => {
     const [email, setEmail] = useState<string>('');
-    const [accounts, setAccounts] = useState<any[]>([]); // 依照實際的資料模型來調整這裡
+    const [accounts, setAccounts] = useState<any[]>([]); 
 
     const handleSearch = async () => {
+        console.log("Search triggered with email:", email);
         try {
+            
             const response = await fetch(`https://192e-163-13-201-95.ngrok-free.app/api/list_accounts/?email=${email}`);
             if (response.ok) {
                 const data = await response.json();
@@ -30,7 +32,7 @@ const ListAccounts: React.FC = () => {
 
             <ul>
                 {accounts.map((account) => (
-                    <li key={account.id}>{account.email}</li> // 依照實際的資料模型來調整這裡
+                    <li key={account.id}>{account.email}</li> 
                 ))}
             </ul>
         </div>
