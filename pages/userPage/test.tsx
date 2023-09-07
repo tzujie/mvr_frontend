@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const ListAccounts: React.FC = () => {
     const [email, setEmail] = useState<string>('');
-    const [accounts, setAccounts] = useState<any[]>([]); 
+    const [accounts, setAccounts] = useState<any[]>([]);
 
     const handleSearch = async () => {
         console.log("Search triggered with email:", email);
         try {
-            
-            const response = await fetch(`https://192e-163-13-201-95.ngrok-free.app/api/list_accounts/?email=${email}`);
-            if (response.ok) {
-                const data = await response.json();
-                setAccounts(data);
+            const response = await axios.get(`https://192e-163-13-201-95.ngrok-free.app/api/list_accounts/?email=${email}`);
+
+            if (response.status === 200) {
+                setAccounts(response.data);
             } else {
                 console.error("Error fetching accounts.");
             }
@@ -32,7 +32,7 @@ const ListAccounts: React.FC = () => {
 
             <ul>
                 {accounts.map((account) => (
-                    <li key={account.id}>{account.email}</li> 
+                    <li key={account.id}>{account.email}</li>
                 ))}
             </ul>
         </div>
