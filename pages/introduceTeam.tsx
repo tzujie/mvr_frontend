@@ -15,17 +15,22 @@ type MemberContent = {
 function Member({ data }: { data: MemberContent }) {
     return (
         <>
-            <div className='w-25'>
+            <div className='w-25' style={{ marginLeft: '5rem' }}>
                 <Image src={`/avatar/${data.filename}.webp`} alt={data.filename} width="600" height="600" className='rounded' />
             </div>
-            <div className='my-1 text-dark w-75'>
-                <h2 className='text-primary fw-bolder'>{data.name}</h2>
-                <h4>{data.work_title}</h4>
-                <div className='lh-base work-content-container'>工作內容：{data.work_content}</div>
+            <div className='d-flex align-items-center justify-content-center text-dark w-75'>
+                <div>
+                    <h2 className='fw-bolder' style={{ fontSize: '4em', color: '#4d86b3' }}>{data.name}</h2>
+                    <h4 style={{ fontSize: '1.75em' }}>{data.work_title}</h4>
+                    <div className='lh-base work-content-container' style={{ fontSize: '1.5em' }}>工作內容：{data.work_content}</div>
+                </div>
             </div>
         </>
     );
 }
+
+
+
 
 export default function IntroduceTeam() {
     const settings = {
@@ -54,19 +59,31 @@ export default function IntroduceTeam() {
                 <link rel="icon" href="/favicon.ico" />
                 <meta httpEquiv="Content-Language" content="en" />
             </Head>
-            <main className='bg-white'>
-                <div className='m-4 p-2 rounded' style={{ minHeight: '90vh', color: 'black' }}>
-                    <h1 className='fw-bold text-dark text-center mt-2'>團隊成員</h1>
-                    <Slider {...settings}>
-                        {teamData.map((data, i) => (
-                            <div key={i} className='d-flex gap-3 mx-4'>
-                                <Member data={data} />
-                            </div>
-                        ))}
-                    </Slider>
+
+            <main style={{ height: 'calc(100vh - 90px)', overflow: 'hidden', backgroundColor: 'white' }}>
+                <div className='m-4 p-2 rounded' style={{ color: 'black' }}>
+                    <div style={{ marginTop: "5rem" }}>
+                        <h1 className='fw-bold text-dark text-center mt-2' style={{ marginBottom: '4rem' }}>團隊成員</h1>
+
+                        <Slider {...settings}>
+                            {teamData.map((data, i) => (
+                                <div key={i} className='d-flex gap-3 mx-4' style={{ marginTop: '2rem', marginBottom: '2rem', fontSize: '1.2em' }}>
+                                    <Member data={data} />
+                                </div>
+                            ))}
+                        </Slider>
+
+                    </div>
                 </div>
             </main>
             <style jsx global>{`
+            .slick-prev, .slick-next {
+                font-size: 30px; 
+                z-index: 1;
+            }
+
+            
+
                 .slick-prev:before, .slick-next:before {
                     color: rgba(0, 0, 0, 0.7); 
                 }
@@ -74,6 +91,8 @@ export default function IntroduceTeam() {
                     max-height: 150px;
                     overflow-y: auto;
                 }
+
+                
             `}</style>
         </>
     )

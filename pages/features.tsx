@@ -80,6 +80,7 @@ const ImageGallery: React.FC = () => {
 
                 img {
                     max-width: 80%;
+           
                     border-radius: 8px;
                 }
 

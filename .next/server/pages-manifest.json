@@ -2,6 +2,9 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/userPage/test": "pages/userPage/test.js",
-  "/userPage/lr": "pages/userPage/lr.js"
+  "/": "pages/index.js",
+  "/features": "pages/features.js",
+  "/userPage/lr": "pages/userPage/lr.js",
+  "/introduceTeam": "pages/introduceTeam.js",
+  "/userPage/card": "pages/userPage/card.js"
 }

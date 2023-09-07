@@ -1,5 +1,7 @@
 {
-  "pages": {},
+  "pages": {
+    "/introduceTeam": []
+  },
   "app": {},
   "appUsingSizeAdjust": false,
   "pagesUsingSizeAdjust": false
