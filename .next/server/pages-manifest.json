@@ -2,7 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/userPage/lr": "pages/userPage/lr.js",
-  "/userPage/accountinfo": "pages/userPage/accountinfo.js"
+  "/userPage/test": "pages/userPage/test.js",
+  "/userPage/lr": "pages/userPage/lr.js"
 }
