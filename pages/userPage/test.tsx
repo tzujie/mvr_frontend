@@ -11,7 +11,7 @@ type AccountDataType = {
     last_login_date: string;
 };
 
-function AccountInfo() {
+function test() {
     const [accountData, setAccountData] = useState<AccountDataType | null>(null);
 
     useEffect(() => {
@@ -48,4 +48,4 @@ function AccountInfo() {
     );
 }
 
-export default AccountInfo;
+export default test;
