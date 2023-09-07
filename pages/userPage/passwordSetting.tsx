@@ -31,10 +31,11 @@ export default function PasswordSetting() {
                 old_password: oldPassword,   
                 new_password: newPassword,   
             });
-            setMessage(response.data.message);
+            window.alert(response.data.message);
+            window.location.href = "/userPage/userSetting";
+
         } catch (error) {
-            
-            setMessage("Password change failed.");
+            window.alert("Password change failed.")
         }
     };
 
