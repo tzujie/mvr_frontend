@@ -1,5 +1,3 @@
-// src/components/AccountLookup.tsx
-
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -20,7 +18,7 @@ const AccountLookup: React.FC = () => {
     };
 
     return (
-        <div>
+        <div style={{ backgroundColor: 'white', padding: '20px' }}>
             <input
                 type="email"
                 placeholder="輸入電子郵件"
@@ -35,7 +33,7 @@ const AccountLookup: React.FC = () => {
                     <p>名稱: {account.name}</p>
                     <p>電子郵件: {account.email}</p>
                     <p>電話: {account.phone}</p>
-                    {/* 顯示其他需要的帳戶資訊 */}
+          
                 </div>
             )}
         </div>
