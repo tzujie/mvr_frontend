@@ -2,5 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/userPage/AccountLookup": "pages/userPage/AccountLookup.js"
+  "/userPage/lr": "pages/userPage/lr.js",
+  "/userPage/passwordSetting": "pages/userPage/passwordSetting.js"
 }

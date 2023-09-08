@@ -25,10 +25,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/userPage/AccountLookup": [
+    "/userPage/lr": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/userPage/AccountLookup.js"
+      "static/chunks/pages/userPage/lr.js"
+    ],
+    "/userPage/passwordSetting": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/userPage/passwordSetting.js"
     ]
   },
   "ampFirstPages": []
