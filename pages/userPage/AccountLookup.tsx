@@ -9,7 +9,12 @@ const AccountLookup: React.FC = () => {
     const handleSearch = async () => {
         try {
             const response = await axios.get(`https://192e-163-13-201-95.ngrok-free.app/api/account/${email}/`);
-            setAccount(response.data);
+            if (typeof response.data === 'string' && response.data.startsWith('<')) {
+                // This looks like HTML, so let's handle it separately
+                setAccount({ html: response.data });
+            } else {
+                setAccount(response.data);
+            }
             setError('');
         } catch (err) {
             setAccount(null);
@@ -30,10 +35,15 @@ const AccountLookup: React.FC = () => {
             {error && <p>{error}</p>}
             {account && (
                 <div>
-                    <p>名稱: {account.name}</p>
-                    <p>電子郵件: {account.email}</p>
-                    <p>電話: {account.phone}</p>
-          
+                    {account.html ?
+                        <div dangerouslySetInnerHTML={{ __html: account.html }} />
+                        :
+                        <>
+                            <p>名稱: {account.name}</p>
+                            <p>電子郵件: {account.email}</p>
+                            <p>電話: {account.phone}</p>
+                        </>
+                    }
                 </div>
             )}
         </div>
