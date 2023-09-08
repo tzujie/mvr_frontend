@@ -33,5 +33,6 @@
     "@types/react": "^18.2.20",
     "@types/react-slick": "^0.23.10",
     "typescript": "^5.1.6"
-  }
+  },
+  "proxy": "https://192e-163-13-201-95.ngrok-free.app/"
 }
