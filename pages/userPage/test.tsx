@@ -23,9 +23,10 @@ function Test() {
 
             if (response.status === 200) {
                 console.log("API Response:", response.data);
-                if (response.data && response.data.length > 0) {
-                    setAccountData(response.data[0]);
-                } else {
+                if (response.data) {
+                    setAccountData(response.data);
+                }
+else {
                     console.warn("API responded with empty data.");
                 }
             } else {
