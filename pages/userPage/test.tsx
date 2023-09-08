@@ -16,11 +16,14 @@ function Test() {
 
     async function fetchAccountData() {
         try {
+            console.log("Fetching data...")
             const response = await axios.get('https://192e-163-13-201-95.ngrok-free.app/api/list_accounts/?email=tzdfsd@gmail.com');
+            console.log("API Response:", response.data);
             if (response.data && response.data.length > 0) {
                 setAccountData(response.data[0]);
             }
         } catch (error) {
+
             console.error("Failed to fetch account data:", error);
         }
     }
