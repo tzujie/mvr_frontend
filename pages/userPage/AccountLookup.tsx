@@ -1,43 +1,52 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+
+type AccountData = {
+    id: number;
+    name: string;
+    email: string;
+    phone: string;
+    login_count: number;
+    start_login_date: string | null;
+    last_login_date: string;
+};
 
 const AccountLookup: React.FC = () => {
-    const [email, setEmail] = useState<string>('');
-    const [account, setAccount] = useState<any>(null);
-    const [error, setError] = useState<string>('');
+    const [accountData, setAccountData] = useState<AccountData | null>(null);
+    const [loading, setLoading] = useState(true);
 
-    const handleSearch = async () => {
-        try {
-            const response = await axios.get(`https://192e-163-13-201-95.ngrok-free.app/api/account/${email}/`, {
-                headers: {
-                    "ngrok-skip-browser-warning": "69420"
+    useEffect(() => {
+        const email = 'tzdfsd@gmail.com';
+        fetch(`https://192e-163-13-201-95.ngrok-free.app/api/account/${email}/`)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
                 }
+                return response.json();
+            })
+            .then((data) => {
+                setAccountData(data);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.error('There was a problem with the fetch operation:', error);
+                setLoading(false);
             });
-            setAccount(response.data);
-            setError('');
-        } catch (err) {
-            setAccount(null);
-            setError('查詢失敗，請確認電子郵件是否正確。');
-        }
-    };
+    }, []);
 
     return (
-        <div style={{ backgroundColor: 'white', padding: '20px' }}>
-            <input
-                type="email"
-                placeholder="輸入電子郵件"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            <button onClick={handleSearch}>查詢</button>
-
-            {error && <p>{error}</p>}
-            {account && (
-                <div>
-                    <p>名稱: {account.name}</p>
-                    <p>電子郵件: {account.email}</p>
-                    <p>電話: {account.phone}</p>
-                </div>
+        <div style={{ padding: '20px', backgroundColor: 'white' }}>
+            {loading ? (
+                <p>Loading...</p>
+            ) : (
+                accountData && (
+                    <div>
+                        <p><strong>Name:</strong> {accountData.name}</p>
+                        <p><strong>Email:</strong> {accountData.email}</p>
+                        <p><strong>Phone:</strong> {accountData.phone}</p>
+                        <p><strong>Login Count:</strong> {accountData.login_count}</p>
+                        <p><strong>Last Login Date:</strong> {accountData.last_login_date}</p>
+                    </div>
+                )
             )}
         </div>
     );
