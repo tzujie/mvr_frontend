@@ -171,3 +171,74 @@
     align-items: center;
     font-size: 1.5em;
 }
+.forgotPasswordLink {
+    cursor: pointer;
+    color: rgb(61, 106, 141);
+    text-decoration: underline;
+    margin-top: 10px;
+}
+.verificationBar {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 5px;
+    background: #eee;
+}
+
+.progressBar {
+    height: 100%;
+    width: 100%;
+    background: #007bff;
+    animation: progress 1s forwards;
+}
+
+@keyframes progress {
+    from {
+        width: 0%
+    }
+
+    to {
+        width: 100%
+    }
+}
+.verificationBarContainer,
+.verificationInputContainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background: #fff;
+    border: 2px solid #162938;
+    border-radius: 5px;
+    text-align: center;
+    width: 300px;
+    z-index: 100;
+}
+
+.verificationBar {
+    background: #e6e6e6;
+    height: 5px;
+    border-radius: 2.5px;
+    margin: 10px 0;
+  
+}
+
+.progressBar {
+    height: 100%;
+    width: 0%;
+    background: #2d65a1;
+    border-radius: 2.5px;
+    animation: progress 2s forwards;
+}
+
+.verificationInputContainer input {
+    padding: 10px;
+    border: 2px solid #162938;
+    border-radius: 5px;
+    font-size: 1em;
+    margin-top: 10px;
+    width: 100%;
+}

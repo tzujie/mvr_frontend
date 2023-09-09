@@ -13,12 +13,14 @@ function Menu({ handleLogout }: { handleLogout: () => void }) {
             <Link href='passwordSetting' passHref>
                 <ListGroup.Item action className={styles.menuItem}>更改密碼</ListGroup.Item>
             </Link>
+            {/*
             <Link href='friendList' passHref>
                 <ListGroup.Item action className={styles.menuItem}>好友清單</ListGroup.Item>
             </Link>
             <Link href='accountinfo' passHref>
                 <ListGroup.Item action className={styles.menuItem}>帳號資訊</ListGroup.Item>
             </Link>
+    */}
                 <ListGroup.Item action onClick={handleLogout} className={styles.menuItem}>
                     登出
                 </ListGroup.Item>

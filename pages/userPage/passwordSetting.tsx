@@ -3,12 +3,15 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from 'js-cookie';
 
+
 export default function PasswordSetting() {
     const [oldPassword, setOldPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [message, setMessage] = useState("");
     const [userId, setUserId] = useState("");
+    const [verificationCode, setVerificationCode] = useState("");
+
 
     useEffect(() => {
 
@@ -50,6 +53,7 @@ export default function PasswordSetting() {
                 <link rel="icon" href="/favicon.ico" />
                 <meta httpEquiv="Content-Language" content="en" />
             </Head>
+
             <main className="container">
                 <div className="blur formBox">
                     <h2 className="title">Change Password</h2>
@@ -63,6 +67,7 @@ export default function PasswordSetting() {
                         />
                         <label>Old Password</label>
                     </div>
+                    
                     <div className="inputBox">
                         <input
                             type="password"
@@ -72,6 +77,7 @@ export default function PasswordSetting() {
                         />
                         <label>New Password</label>
                     </div>
+
                     <div className="inputBox">
                         <input
                             type="password"
@@ -89,9 +95,7 @@ export default function PasswordSetting() {
             </main>
 
             <style jsx>{`
-                    
-            
-          
+                           
                 .container {
                     height: 100%;
                     width: 100%;

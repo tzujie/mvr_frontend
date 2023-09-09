@@ -2,6 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/userPage/lr": "pages/userPage/lr.js",
-  "/userPage/passwordSetting": "pages/userPage/passwordSetting.js"
+  "/introduceTeam": "pages/introduceTeam.js",
+  "/explore": "pages/explore.js",
+  "/features": "pages/features.js"
 }

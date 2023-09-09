@@ -18,6 +18,17 @@ const ImageGallery: React.FC = () => {
             duration: 1200,
             once: false,
         });
+
+        const script = document.createElement('script');
+        script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+        script.async = true;
+        document.body.appendChild(script);
+
+
+
+        return () => {
+            document.body.removeChild(script);
+        };
     }, []);
 
     return (
@@ -25,6 +36,7 @@ const ImageGallery: React.FC = () => {
             <Head>
                 <meta httpEquiv="Content-Language" content="zh-TW" />
             </Head>
+            <div id="google_translate_element" style={{ position: 'fixed', top: '10px', right: '10px' }}></div>
         <div className="gallery-container">
             {images.map((image, idx) => (
                 <div key={idx}
@@ -37,6 +49,7 @@ const ImageGallery: React.FC = () => {
                         <h2 className="title">{image.title}</h2>
                         <p>{image.description}</p>
                     </div>
+                   
                 </div>
             ))}
 
@@ -90,6 +103,7 @@ const ImageGallery: React.FC = () => {
                     margin-bottom: 1rem;
                 }
                 .text-container {
+                    padding-top: 4rem;
                     flex: 1;
                     display: flex;
                     flex-direction: column; 
@@ -98,6 +112,10 @@ const ImageGallery: React.FC = () => {
                     padding: 2rem;
                     position: relative;  
                 }
+                .text-container p {
+                    max-width: 100%;
+                }
+
 
                 .title {
                     font-size: 2.5rem;  
@@ -116,10 +134,12 @@ const ImageGallery: React.FC = () => {
                     font-size: 1.5rem;
                     text-align: center;
                     width: 80%;
-                    margin-top:4rem;
+               
+                    margin-top: 8rem; 
                 }
             `}</style>
         </div>
+        
         </>
     );
 }

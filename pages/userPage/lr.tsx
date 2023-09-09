@@ -2,6 +2,7 @@ import React, { useState, FormEvent } from 'react';
 import styles from './LoginRegister.module.css';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom'
 
 const LoginRegister: React.FC = () => {
     const [isLogin, setIsLogin] = useState(true);
@@ -10,15 +11,39 @@ const LoginRegister: React.FC = () => {
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [gender, setGender] = useState('');
+
+    const [showVerificationBar, setShowVerificationBar] = useState(false);
+    const [showVerificationInput, setShowVerificationInput] = useState(false);
+    const [verificationCode, setVerificationCode] = useState('');
+
+
+
     const switchToLogin = () => {
         resetInputs();
         setIsLogin(true);
     };
-
+    
     const switchToRegister = () => {
         resetInputs();
         setIsLogin(false);
     };
+
+    const handleForgotPassword = () => {
+        setShowVerificationBar(true);
+        setTimeout(() => {
+            setShowVerificationBar(false);
+            setShowVerificationInput(true);
+        }, 2000);
+    };
+    const handleVerificationSubmit = (code: string) => {
+        if (code === "0000") {
+            alert("驗證成功！請重設密碼。");
+            setShowVerificationInput(false);
+            window.location.replace('/userPage/userSetting');
+        } else {
+            alert("驗證碼錯誤，請重新輸入。");
+        }
+    }
 
     const resetInputs = () => {
         setEmail('');
@@ -78,6 +103,29 @@ const LoginRegister: React.FC = () => {
             window.alert('註冊失敗!!');
         }
     };
+    if (showVerificationBar) {
+        return (
+            <div className={styles.verificationBarContainer}>
+                <p>驗證信已發送，請稍候...</p>
+                <div className={styles.progressBar}></div>
+            </div>
+        );
+    }
+
+    if (showVerificationInput) {
+        return (
+            <div className={styles.verificationInputContainer}>
+                <p>請輸入驗證碼：</p>
+                <input
+                    type="text"
+                    value={verificationCode}
+                    onChange={(e) => setVerificationCode(e.target.value)}
+                />
+                <button className={styles.submitBtn} onClick={() => handleVerificationSubmit(verificationCode)}>Submit Code</button>
+            </div>
+        );
+    }
+
 
     return (
         <div className={styles.container}>
@@ -97,6 +145,11 @@ const LoginRegister: React.FC = () => {
                         Don't have an account?{' '}
                         <span className={styles.registerLink} onClick={switchToRegister}>Register</span>
                     </p>
+                    <p onClick={handleForgotPassword} className={styles.forgotPasswordLink}>忘記密碼？</p>
+                    <div className={styles.verificationBar} style={{ display: showVerificationBar ? 'block' : 'none' }}>
+                        <div className={styles.progressBar}></div>
+                    </div>
+
                 </form>
             ) : (
                 <form onSubmit={handleRegister} className={styles.blur}>
@@ -135,6 +188,7 @@ const LoginRegister: React.FC = () => {
                             Already have an account?{' '}
                             <span className={styles.registerLink} onClick={switchToLogin}>Login</span>
                         </p>
+                        
                 </form>
             )}
         </div>
