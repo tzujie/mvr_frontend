@@ -1,7 +1,5 @@
 self.__FONT_LOADER_MANIFEST={
-  "pages": {
-    "/introduceTeam": []
-  },
+  "pages": {},
   "app": {},
   "appUsingSizeAdjust": false,
   "pagesUsingSizeAdjust": false

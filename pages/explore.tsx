@@ -12,14 +12,14 @@ function PhotoCarousel() {
         <div className='d-flex justify-content-center mt-5'>
             <Carousel className='w-75'>
                 {[...new Array(5)].map((_, i) => {
-                    const filenames = ['interface', 'main_menu', 'world', 'event_world', 'shop'];
+                    const filenames = ['登入畫面', '主選單畫面', 'Create world 選擇官方或自定義畫面', '大型演唱會', '商店選購'];
                     return (
                         <Carousel.Item key={i}>
                             <Image
                                 src={`/photoCarousel/${filenames[i]}.png`}
                                 alt={filenames[i]}
                                 width="1200"
-                                height="800"
+                                height="600"
                                 className={`w-100 rounded ${selectedImage === i ? 'image-zoom' : ''}`}
                                 onMouseOver={() => setSelectedImage(i)}
                                 onMouseOut={() => setSelectedImage(-1)}
@@ -51,10 +51,10 @@ function SystemIntro() {
 function SocialLinks() {
     return (
         <div className="social-links d-flex justify-content-center mt-5">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/mvr_virtual_reality/" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-instagram-square fa-3x mx-3"></i>
             </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.facebook.com/MVR.NEWVR" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-facebook-square fa-3x mx-3"></i>
             </a>
             <style jsx>{`
