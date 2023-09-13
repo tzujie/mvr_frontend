@@ -17,26 +17,14 @@ const AccountLookup: React.FC = () => {
     useEffect(() => {
         const email = 'tzdfsd@gmail.com';
 
-        fetch(`https://8c9b-163-13-201-95.ngrok-free.app/api/account/${email}/`, {
-            method: "get",
-            headers: new Headers({
-                "ngrok-skip-browser-warning": "69420",
-            }),
+        fetch('https://8c9b-163-13-201-95.ngrok-free.app/api/list_accounts/?email=tzdfsd@gmail.com', {
+            headers: {
+                "ngrok-skip-browser-warning": "69420"
+            }
         })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then((data) => {
-                setAccountData(data);
-                setLoading(false);
-            })
-            .catch((error) => {
-                console.error('There was a problem with the fetch operation:', error);
-                setLoading(false);
-            });
+            .then(res => res.json())
+            .then(json => console.log(json))
+            .catch(err => console.log(err));
     }, []);
 
     return (
