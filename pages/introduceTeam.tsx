@@ -27,7 +27,7 @@ function Member({ data }: { data: MemberContent }) {
             </div>
             <style jsx>{`
                 .work-content-container {
-                    height: 100px;  
+                    height: 130px;  
                     overflow: hidden;
                 }
             `}</style>
@@ -49,12 +49,12 @@ export default function IntroduceTeam() {
     };
 
     const teamData: MemberContent[] = [
-        { filename: '30448', name: '孫耀庭', work_title: '規劃流程與管理', work_content: '負責制定開發目標、短期長期目標與明確的日程規劃，後續進行追蹤與微調' },
-        { filename: '30414', name: '劉宣珉', work_title: '挑選物件模型、背景與製作', work_content: '負責尋找可使用的物件資源，進行修改與調整，製作成需要的樣貌' },
-        { filename: '30141', name: '張宇辰', work_title: '調整與修改Unity中的物件', work_content: '負責處理遊戲引擎Unity中的物件與場景的互動模式，包括移動、拿取放下、與選單互動等' },
-        { filename: '30927', name: '李佳翰', work_title: '製作網站及調整與修改Unity中的物件', work_content: '負責製作網站與更新、維護，並幫忙處理遊戲引擎Unity的相關工作' },
-        { filename: '31396', name: '施品伃', work_title: '美術場景製作與文書相關事宜', work_content: '負責製作美術場景與物件模型，並處理報告、競賽等文書作業' },
-        { filename: '31453', name: '甯子倢', work_title: '美術場景製作與AI客服', work_content: '負責製作美術場景與物件模型，並製作、訓練AI客服機器人的模型' },
+        { filename: '30448', name: '孫耀庭', work_title: '專案負責人', work_content: '負責制定開發目標、時程流程規劃、進行後續追蹤與調整專案內容、負責多人遊戲部分開發、協助團隊成員各項事項，包括協作美術組、技術組、文書組。' },
+        { filename: '30414', name: '劉宣珉', work_title: '美術組成員 & 文書組成員', work_content: '負責美術相關場景創作、根據需求修改與調整、尋找相對應的美術素材、協作 文書檔案，處理關於美術類型與文書資料調整。' },
+        { filename: '30141', name: '張宇辰', work_title: '技術組成員', work_content: '負責處理遊戲引擎Unity中物件與場景的交互動作，包括影音開發、物件創造、選單互動、樂器處理等，處理有關Unity的相關技術。' },
+        { filename: '30927', name: '李佳翰', work_title: '技術組成員', work_content: '負責網站前端架設與開發、協作虛擬引擎 Unity 中的相關事項，包括角色修改、Unity與網站的連線等，有關網站與Unity相關技術。' },
+        { filename: '31396', name: '施品伃', work_title: '美術組成員 & 文書組成員', work_content: '負責美術相關場景製作、負責文書相關工作，包含:整理、彙整、影片製作、 簡報等，處理美術場景創作以及相關文書資料。' },
+        { filename: '31453', name: '甯子倢', work_title: '技術組成員', work_content: '負責網站前後端以及資料庫的架設、開發、維護，AI客服機器人模型的訓練導入，處理關於AI角色以及網站相關技術' },
     ]
     return (
         <>
@@ -83,18 +83,18 @@ export default function IntroduceTeam() {
                 </div>
             </main>
             <style jsx global>{`
-            .slick-prev, .slick-next {
-                font-size: 30px; 
-                z-index: 1;
-            }
-
-            
+                .slick-prev, .slick-next {
+                    font-size: 30px; 
+                    z-index: 1;
+                }
 
                 .slick-prev:before, .slick-next:before {
                     color: rgba(0, 0, 0, 0.7); 
                 }
+
                 .work-content-container {
-                    max-height: 150px;
+                    font-size: 10em;
+                    max-height: 200px;
                     overflow-y: auto;
                 }
 
