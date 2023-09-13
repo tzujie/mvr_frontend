@@ -16,7 +16,13 @@ const AccountLookup: React.FC = () => {
 
     useEffect(() => {
         const email = 'tzdfsd@gmail.com';
-        fetch(`https://8c9b-163-13-201-95.ngrok-free.app/api/account/${email}/`)
+
+        fetch(`https://8c9b-163-13-201-95.ngrok-free.app/api/account/${email}/`, {
+            method: "get",
+            headers: new Headers({
+                "ngrok-skip-browser-warning": "69420",
+            }),
+        })
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
