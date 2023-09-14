@@ -4,7 +4,7 @@ type AccountData = {
     id: number;
     name: string;
     email: string;
-    // ... other fields
+    phone: string;  
 };
 
 const App: React.FC = () => {
@@ -49,7 +49,7 @@ const App: React.FC = () => {
 
     return (
         <div style={{ fontFamily: 'Arial, sans-serif', textAlign: 'center', backgroundColor: '#f4f4f4', height: '100vh' }}>
-            <header style={{ backgroundColor: '#4CAF50', color: '#fff', padding: '10px 0', fontSize: '1.5em' }}>
+            <header style={{ backgroundColor: '#4d86b3', color: '#fff', padding: '10px 0', fontSize: '1.5em' }}>
                 Account Information
             </header>
             <div style={{ padding: '20px' }}>
@@ -58,7 +58,7 @@ const App: React.FC = () => {
                         <p><strong>ID:</strong> {data.id}</p>
                         <p><strong>Name:</strong> {data.name}</p>
                         <p><strong>Email:</strong> {data.email}</p>
-                        {/* Display other data as per requirement... */}
+                        <p><strong>Phone:</strong> {data.phone}</p> 
                     </div>
                 )}
             </div>

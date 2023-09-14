@@ -16,11 +16,11 @@ function Menu({ handleLogout }: { handleLogout: () => void }) {
             {/*
             <Link href='friendList' passHref>
                 <ListGroup.Item action className={styles.menuItem}>好友清單</ListGroup.Item>
-            </Link>
-            <Link href='accountinfo' passHref>
+            </Link>*/
+            <Link href='AccountLookup' passHref>
                 <ListGroup.Item action className={styles.menuItem}>帳號資訊</ListGroup.Item>
             </Link>
-    */}
+    }
                 <ListGroup.Item action onClick={handleLogout} className={styles.menuItem}>
                     登出
                 </ListGroup.Item>
