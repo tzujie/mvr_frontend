@@ -26,7 +26,7 @@ const App: React.FC = () => {
             }
 
             try {
-                const response = await fetch(`https://f648-163-13-201-95.ngrok-free.app/api/list_accounts/?email=${email}`, {
+                const response = await fetch(`https://f648-163-13-201-95.ngrok-free.app/api/accounts/?email=${email}`, {
                     headers: {
                         "ngrok-skip-browser-warning": "69420"
                     }
