@@ -60,7 +60,7 @@ const RechargePage: React.FC = () => {
         event.preventDefault();
 
         try {
-            const response = await fetch('https://8c9b-163-13-201-95.ngrok-free.app/api/update_money/', {
+            const response = await fetch('https://f648-163-13-201-95.ngrok-free.app/api/update_money/', {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',

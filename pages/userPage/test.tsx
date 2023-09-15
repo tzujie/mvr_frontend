@@ -19,7 +19,7 @@ function Test() {
         console.log("Attempting to fetch data...");
 
         try {
-            const response = await axios.get('https://8c9b-163-13-201-95.ngrok-free.app/api/list_accounts/?email=tzdfsd@gmail.com');
+            const response = await axios.get('https://f648-163-13-201-95.ngrok-free.app/api/list_accounts/?email=tzdfsd@gmail.com');
 
             if (response.status === 200) {
                 console.log("API Response:", response.data);
